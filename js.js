@@ -5,6 +5,19 @@ window.onload = function() {
   const stats = new Stats();
   document.body.appendChild(stats.dom);
 
+  // Вводные данные
+  let inputData = {
+    text: "Some text",
+    x: 100,
+    y: 100,
+    size: 50,
+  };
+
+  gui.add(inputData, "text");
+  gui.add(inputData, "x", 0, 300);
+  gui.add(inputData, "y", 0, 300);
+  gui.add(inputData, "size", 10, 100);
+
   // Resize thw window
   function resize() {
     canvas.width = window.innerWidth;
@@ -30,7 +43,7 @@ window.onload = function() {
     ctx.beginPath();
     ctx.font = "20px Arial";
     ctx.fillStyle = "red";
-    ctx.fillText(inputData.text, inputData.x, inputData.y);
+    ctx.fillText(inputData.text, inputData.x, inputData.y - 10);
   }
 
   // click function
@@ -43,18 +56,6 @@ window.onload = function() {
     }
     console.log(`You click on '${e.target.localName}'`);
   }
-
-  let inputData = {
-    text: "Some text",
-    x: 50,
-    y: 50,
-    size: 50,
-  };
-
-  gui.add(inputData, "text");
-  gui.add(inputData, "x", 0, 100);
-  gui.add(inputData, "y", 0, 100);
-  gui.add(inputData, "size", 10, 100);
 
   window.addEventListener("resize", resize);
   window.addEventListener("click", click);
